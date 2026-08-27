@@ -19,7 +19,7 @@ app.post('/addorder', async (req, res) => {
             req.body.isPaymentSuccessful ??
             false;
 
-        const paymentResponse = await axios.post('http://localhost:3003/paymentprocess', {
+        const paymentResponse = await axios.post('http://98.91.180.153:3003/paymentprocess', {
             ...req.body,
             paymentSuccess: isPaymentSuccessful
         });
@@ -27,7 +27,7 @@ app.post('/addorder', async (req, res) => {
 
         let notificationResult;
         try {
-            const notificationResponse = await axios.post('http://localhost:3004/sendnotification', {
+            const notificationResponse = await axios.post('http://13.221.191.186/sendnotification', {
                 paymentSuccess: paymentResult.success
             });
             notificationResult = notificationResponse.data;
